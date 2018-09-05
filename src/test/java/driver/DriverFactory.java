@@ -18,12 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 
 public class DriverFactory {
-	protected static AndroidDriver<?> driver;
-    public static Properties prop = new Properties();
-    public static InputStream input = null;
-    public static Logger logger = Logger.getLogger(DriverFactory.class);
+	private  AndroidDriver<?> driver;
+    private  Properties prop = new Properties();
+    private  InputStream input = null;
+    private  Logger logger = Logger.getLogger(DriverFactory.class);
 
-    public static AndroidDriver getDriver() throws IOException {
+    public AndroidDriver getDriver() throws IOException {
         String PropertyFilePath=System. getProperty("user.dir")+"/src/test/java/config/device.properties";
         File datafile=new File(PropertyFilePath);
     	input = new FileInputStream(datafile);
@@ -57,7 +57,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public static AndroidDriver AndroidSetup() throws MalformedURLException {
+    public AndroidDriver AndroidSetup() throws MalformedURLException {
         logger.info("Setting Android Driver");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("deviceName", prop.getProperty("DeviceID"));

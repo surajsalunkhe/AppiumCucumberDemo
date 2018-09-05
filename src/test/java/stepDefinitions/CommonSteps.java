@@ -6,17 +6,19 @@ import cucumber.api.java.en.When;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
 import java.util.Set;
 import static driver.DriverFactory.getDriver;
 
 public class CommonSteps {
 
-    protected AndroidDriver driver;
+    public AndroidDriver driver;
     Logger logger = Logger.getLogger(CommonSteps.class);
     public CommonSteps(AndroidDriver driver) {
         this.driver = driver;
@@ -106,6 +108,20 @@ public class CommonSteps {
         driver.context((String) contextNames.toArray()[1]); // set context to WEBVIEW_1
 
         logger.info("Current context" + driver.getContext());
+    }
+
+    @Given("^I scroll page up$")
+    @When("^I scroll page up in when$")
+    @Then("^I scroll page up in then$")
+    public void scrollPageUp() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        HashMap<String, Double> swipeObject = new HashMap<String, Double>();
+        swipeObject.put("startX", 0.50);
+        swipeObject.put("startY", 0.95);
+        swipeObject.put("endX", 0.50);
+        swipeObject.put("endY", 0.01);
+        swipeObject.put("duration", 3.0);
+        js.executeScript("mobile: swipe", swipeObject);
     }
 
 }
