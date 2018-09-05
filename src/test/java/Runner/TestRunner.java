@@ -3,22 +3,20 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import com.cucumber.listener.Reporter;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
+import java.io.File;
+
 @CucumberOptions(
         features = "src/test/java/Features",
         glue = {"stepDefinitions"},
         tags = {"~@Ignore"},
-        format = {
-        "pretty",
-        "html:target/cucumber-reports/cucumber-pretty",
-        "json:target/cucumber-reports/CucumberTestReport.json",
-        "rerun:target/cucumber-reports/rerun.txt"},
-        plugin = "json:target/cucumber-reports/CucumberTestReport.json")
+        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"}
+        )
 
 public class TestRunner {
 	private TestNGCucumberRunner testNGCucumberRunner;
@@ -40,7 +38,9 @@ public class TestRunner {
  
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
-        testNGCucumberRunner.finish();
+        //testNGCucumberRunner.finish();
+        Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
+
     }
    
 }

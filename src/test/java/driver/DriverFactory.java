@@ -57,7 +57,7 @@ public class DriverFactory {
                 //iosSetup();
             }
         }
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
     }
 
@@ -70,7 +70,7 @@ public class DriverFactory {
         caps.setCapability("appActivity", prop.getProperty("Activity"));
         caps.setCapability(AndroidMobileCapabilityType.APP_WAIT_ACTIVITY, prop.getProperty("WaitActivity"));
         caps.setCapability("newCommandTimeout", 10000);
-        driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
         logger.info("Android Driver set succesfully");
         return driver;
     }

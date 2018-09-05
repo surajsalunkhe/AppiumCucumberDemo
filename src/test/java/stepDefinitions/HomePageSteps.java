@@ -1,13 +1,12 @@
 package stepDefinitions;
 
-import driver.TestContext;
-import io.appium.java_client.android.AndroidDriver;
+import context.TestContext;
 import pages.HomePage;
 
 public class HomePageSteps {
 	TestContext testContext;
 	HomePage homePage;
-	
+
 
 	public HomePageSteps(TestContext context) {
 		testContext = context;

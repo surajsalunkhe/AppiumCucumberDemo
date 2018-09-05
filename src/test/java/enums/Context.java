@@ -1,4 +1,5 @@
 package enums;
 
-public class Context {
+public enum Context {
+    PRODUCT_NAME;
 }
