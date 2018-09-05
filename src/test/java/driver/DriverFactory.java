@@ -23,6 +23,10 @@ public class DriverFactory {
     private  InputStream input = null;
     private  Logger logger = Logger.getLogger(DriverFactory.class);
 
+    public DriverFactory(AndroidDriver driver) {
+        this.driver=driver;
+    }
+
     public AndroidDriver getDriver() throws IOException {
         String PropertyFilePath=System. getProperty("user.dir")+"/src/test/java/config/device.properties";
         File datafile=new File(PropertyFilePath);

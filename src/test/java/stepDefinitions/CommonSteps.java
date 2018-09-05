@@ -3,6 +3,7 @@ package stepDefinitions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import driver.DriverFactory;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,17 +12,16 @@ import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.HashMap;
 import java.util.Set;
-import static driver.DriverFactory.getDriver;
 
-public class CommonSteps {
 
-    public AndroidDriver driver;
+public class CommonSteps extends DriverFactory {
+
+    private AndroidDriver driver;
     Logger logger = Logger.getLogger(CommonSteps.class);
     public CommonSteps(AndroidDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     @Given("^I launch the app$")

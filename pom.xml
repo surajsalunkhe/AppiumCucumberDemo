@@ -27,6 +27,13 @@
 	      <version>LATEST</version>
 	      <scope>compile</scope>
 	    </dependency>
+		<!--Dependency Injection in Project using Pico Container-->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
 	    <!-- Gson dependency -->
 	    <dependency>
 	      <groupId>com.googlecode.json-simple</groupId>
