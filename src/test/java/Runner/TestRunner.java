@@ -39,8 +39,14 @@ public class TestRunner {
     @AfterClass(alwaysRun = true)
     public void tearDownClass() throws Exception {
         //testNGCucumberRunner.finish();
-        Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
-
+        String extentconfig=System. getProperty("user.dir")+"/src/test/java/config/extent-config.xml";
+        Reporter.loadXMLConfig(extentconfig);
+        Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
+        Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
+        Reporter.setSystemInfo("OS", "Mac OS Sierra");
+        Reporter.setSystemInfo("Host Name", "Suraj");
+        Reporter.setSystemInfo("Environment", "QA");
+        Reporter.setSystemInfo("User Name", "Suraj Salunkhe");
     }
    
 }

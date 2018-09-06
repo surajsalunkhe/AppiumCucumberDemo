@@ -27,7 +27,7 @@ public class DriverFactory {
         this.driver=driver;
     }
 
-    public AndroidDriver getDriver() throws IOException {
+    public AndroidDriver createLocalDriver() throws IOException {
         String PropertyFilePath=System. getProperty("user.dir")+"/src/test/java/config/device.properties";
         File datafile=new File(PropertyFilePath);
     	input = new FileInputStream(datafile);

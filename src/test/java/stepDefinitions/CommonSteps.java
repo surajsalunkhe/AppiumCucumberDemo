@@ -28,7 +28,7 @@ public class CommonSteps extends DriverFactory {
     @When("^I launch the app in When$")
     public void i_launch_the_app() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        driver=getDriver();
+        driver= createLocalDriver();
     }
 
     @Given("^I wait for app to load$")
