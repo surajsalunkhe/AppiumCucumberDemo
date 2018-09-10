@@ -17,7 +17,4 @@ public class PageObjectManager {
     public HomePage getHomePage(){
         return (homePage == null) ? homePage = new HomePage(driver) : homePage;
     }
-    public CommonSteps getCommonFunction(){
-        return (commonSteps == null) ? commonSteps = new CommonSteps(driver) : commonSteps;
-    }
 }

@@ -1,9 +1,10 @@
 package stepDefinitions;
 
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import driver.DriverFactory;
+import driver.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -16,19 +17,20 @@ import java.util.HashMap;
 import java.util.Set;
 
 
-public class CommonSteps extends DriverFactory {
+public class CommonSteps {
 
     private AndroidDriver driver;
     Logger logger = Logger.getLogger(CommonSteps.class);
-    public CommonSteps(AndroidDriver driver) {
-        super(driver);
+    public DriverManager driverManager;
+    public CommonSteps(){
+        this.driver = driver;
     }
 
     @Given("^I launch the app$")
     @When("^I launch the app in When$")
     public void i_launch_the_app() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        driver= createLocalDriver();
+        driver = driverManager.getDriver();
     }
 
     @Given("^I wait for app to load$")

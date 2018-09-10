@@ -12,8 +12,6 @@ User should be able to add address (Hint: You may choose 619747 for postal code 
 @tag1
 Scenario: Launch the app register to app
 Given I launch the app
-And I wait for element id "shop" to load
-And I wait for element xpath "shop" to load
 
 
 
