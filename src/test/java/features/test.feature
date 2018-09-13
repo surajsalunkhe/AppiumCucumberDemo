@@ -9,7 +9,7 @@ User should be able to update items quantity in cart
 User should be able to checkout
 User should be able to add address (Hint: You may choose 619747 for postal code and level 7 and unit 1 for address.)
 
-@tag1
+@TestngScenario
 Scenario: Launch the app register to app
 Given I launch the app
 

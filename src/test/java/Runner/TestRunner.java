@@ -1,4 +1,5 @@
 package Runner;
+import com.cucumber.listener.ExtentProperties;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import driver.FileReaderManager;
 import org.testng.annotations.AfterClass;
@@ -13,10 +14,13 @@ import cucumber.api.testng.TestNGCucumberRunner;
 import java.io.File;
 
 @CucumberOptions(
+        strict = true,
+        monochrome = true,
         features = "/src/test/java/features",
-        tags = {"~@Ignore"},
+        tags = {"@TestngScenario"},
         glue = {"/src/test/java/stepDefinitions"},
-        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"}
+        plugin = { "pretty", "html:target/cucumber-html-report",
+                "com.cucumber.listener.ExtentCucumberFormatter:"}
         )
 
 public class TestRunner extends AbstractTestNGCucumberTests {
@@ -24,6 +28,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
     @BeforeClass(alwaysRun = true)
     public void setUpClass() throws Exception {
+        ExtentProperties extentProperties = ExtentProperties.INSTANCE;
+        extentProperties.setReportPath("ExecutionReport/myreport.html");
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
@@ -38,15 +44,13 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     }
 
     @AfterClass(alwaysRun = true)
-    public static void writeExtentReport() {
+    public void tearDownClass() throws Exception {
+        testNGCucumberRunner.finish();
         Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
         Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
         Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
         Reporter.setSystemInfo("Machine", 	"macOS Sierra" + "64 Bit");
         Reporter.setSystemInfo("Maven", "3.5.2");
         Reporter.setSystemInfo("Java Version", "1.8.0_101");
-    }
-    public void tearDownClass() throws Exception {
-        testNGCucumberRunner.finish();
     }
 }
