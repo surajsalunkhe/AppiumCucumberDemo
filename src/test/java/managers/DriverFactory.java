@@ -1,4 +1,4 @@
-package driver;
+package managers;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
@@ -81,8 +81,8 @@ public class DriverFactory {
     caps.setCapability("platformVersion", "9.2");
     caps.setCapability("deviceName", "iPhone 6");
     caps.setCapability("app", app.getAbsolutePath());
-    driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+    managers = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
     logger.info("iOS Driver set succesfully");
-    return driver;
+    return managers;
 	}*/
 }

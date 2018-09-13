@@ -1,4 +1,4 @@
-package driver;
+package managers;
 
 import io.appium.java_client.android.AndroidDriver;
 import pages.HomePage;

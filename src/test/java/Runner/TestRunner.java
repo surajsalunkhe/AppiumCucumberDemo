@@ -1,7 +1,7 @@
 package Runner;
 import com.cucumber.listener.ExtentProperties;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import driver.FileReaderManager;
+import managers.FileReaderManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -17,7 +17,7 @@ import java.io.File;
         strict = true,
         monochrome = true,
         features = "/src/test/java/features",
-        tags = {"@TestngScenario"},
+        //tags = {"@TestngScenario"},
         glue = {"/src/test/java/stepDefinitions"},
         plugin = { "pretty", "html:target/cucumber-html-report",
                 "com.cucumber.listener.ExtentCucumberFormatter:"}

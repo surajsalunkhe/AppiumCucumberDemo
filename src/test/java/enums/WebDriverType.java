@@ -1,6 +1,6 @@
 package enums;
 
-public enum DriverType {
+public enum WebDriverType {
     FIREFOX,
     CHROME,
     INTERNETEXPLORER
