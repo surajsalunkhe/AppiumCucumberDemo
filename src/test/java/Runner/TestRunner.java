@@ -1,5 +1,6 @@
 package Runner;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import driver.FileReaderManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -8,6 +9,8 @@ import com.cucumber.listener.Reporter;
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
+
+import java.io.File;
 
 @CucumberOptions(
         features = "/src/test/java/features",
@@ -35,15 +38,15 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     }
 
     @AfterClass(alwaysRun = true)
-    public void tearDownClass() throws Exception {
-        //testNGCucumberRunner.finish();
-        String extentconfig=System.getProperty("user.dir")+"/src/test/java/config/extent-config.xml";
-        Reporter.loadXMLConfig(extentconfig);
+    public static void writeExtentReport() {
+        Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
         Reporter.setSystemInfo("User Name", System.getProperty("user.name"));
         Reporter.setSystemInfo("Time Zone", System.getProperty("user.timezone"));
-        Reporter.setSystemInfo("OS", "Mac OS Sierra");
-        Reporter.setSystemInfo("Host Name", "Suraj");
-        Reporter.setSystemInfo("Environment", "QA");
-        Reporter.setSystemInfo("User Name", "Suraj Salunkhe");
+        Reporter.setSystemInfo("Machine", 	"macOS Sierra" + "64 Bit");
+        Reporter.setSystemInfo("Maven", "3.5.2");
+        Reporter.setSystemInfo("Java Version", "1.8.0_101");
+    }
+    public void tearDownClass() throws Exception {
+        testNGCucumberRunner.finish();
     }
 }

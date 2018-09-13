@@ -1,7 +1,7 @@
 /**
  * 
  */
-package config;
+package driver;
 
 /**
  * @author Suraj
@@ -9,8 +9,6 @@ package config;
  */
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import driver.ServerManager;
 
 public class ADB {
 

@@ -1,11 +1,9 @@
 package driver;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import config.ADB;
 
 import java.io.File;
 import java.io.FileInputStream;
